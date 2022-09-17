@@ -18,7 +18,7 @@ export default function Home() {
         setPáginaActual(pageNumber)
     }
     useEffect(()=>{
-       dispatch(getGames())
+       !videogames.length && dispatch(getGames())
        dispatch(getGenres())
     }, [dispatch])
     return (
