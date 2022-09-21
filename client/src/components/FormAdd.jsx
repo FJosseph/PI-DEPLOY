@@ -22,6 +22,7 @@ const FormAdd = ()=>{
         name: "",
         description: "",
         fecha_lanzamiento: '',
+        background_image: '',
         rating: '',
         plataformas: [],
         genres: []
@@ -112,17 +113,22 @@ const FormAdd = ()=>{
     },[genres, plataformas])
     return (
         <div id="form-add">
-            <div id="go-Home">
-                <Link to='/home'>Home</Link>
-            </div>
             <form onSubmit={handleSubmit}>
-                ¡Añade un videogame!
+                <div id="text-container">
+                    <div id="go-Home">
+                        <Link to='/home'>Home</Link>
+                    </div>
+                    <div style={{margin: "4px 0"}}>
+                    ¡Añade un videogame!
+                    </div>
+                </div>
                 <input name='name' value={input.name} type="text" onChange={handleInputChange} placeholder="Nombre*" required/>
                 {errores.name && (<p>{errores.name}</p>)}
                 <input name="description" value={input.description} onChange={handleInputChange} type="text" placeholder="Descripción*" required/>
                 {errores.description && (<p>{errores.description}</p>)}
                 <input name="fecha_lanzamiento" value={input.fecha_lanzamiento} onChange={handleInputChange} type="date" placeholder="fecha de lanzamiento" required/>
                 {errores.fecha_lanzamiento && (<p>{errores.fecha_lanzamiento}</p>)}
+                <input name="background_image" value={input.background_image} onChange={handleInputChange} type="text" placeholder="Url de la imagen"/>
                 <input name='rating' value={input.rating} onChange={handleInputChange} type="number" placeholder="Rating" max='5'min='0' required/>
                 {errores.rating && (<p>{errores.rating}</p>)}
                 <label>Elige los géneros:</label>

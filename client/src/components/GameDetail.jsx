@@ -11,7 +11,7 @@ const GameDetail = ()=>{
     useEffect(()=>{
         dispatch(gameDetail(id))
     }, [dispatch])
-    const {name, description, fecha_lanzamiento, plataformas, imagen, rating, genres} = detail
+    const {name, description, fecha_lanzamiento, plataformas, imagen, rating, genres, background_image } = detail
     return (
         <div className="container-detail">
             <div id="go-home">
@@ -20,7 +20,7 @@ const GameDetail = ()=>{
           <div id="box-detail">
             <div className="detail">
                 <div className="img-container">
-                    <img src={imagen} alt="" />
+                    <img src={imagen || background_image} alt="" />
                 </div>
                 <div className="detail-text">
                     {/* <h1>Detail</h1> */}

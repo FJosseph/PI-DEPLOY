@@ -4,10 +4,12 @@ import Games from "./Games";
 import { getGames, getGenres } from "../actions";
 import Paginado from "./Paginado";
 import './home.css'
+import Loader from "./Loader";
 
 export default function Home() {
     const dispatch = useDispatch()
     const videogames = useSelector(state=>state.videogames)
+    const allVideogames = useSelector(state=>state.allVideogames)
     const gamesSearched = useSelector(state => state.gamesSearched)
     const [páginaActual, setPáginaActual] = useState(1)
     const [gamesPágina, setGamesPágina] = useState(15)
@@ -22,10 +24,12 @@ export default function Home() {
        dispatch(getGenres())
     }, [dispatch])
     return (
+        <>{!allVideogames.length?<Loader/>:
         <section id="container">
             <Paginado allGames={videogames.length} gamesPágina={gamesPágina} paginado={paginado}/>
-            {videogames.length?<Games games={gamesActuales}/>:<div style={{height:"100vh", color: "white"}}>'Espera un momento...'</div>
+            {videogames.length?<Games games={gamesActuales}/>:<div style={{height:"100vh", color: "white"}}>'Sin resultados por el momento...'</div>
             }
-        </section>
+        </section>}
+        </>
     )
 }

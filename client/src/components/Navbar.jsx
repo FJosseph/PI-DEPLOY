@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import './navbar.css'
 import { filterByCreated, filterGameByGenre, getGamesBySearch, sortAlfabéticamente, sortByRating } from "../actions";
 const NavBar = ()=>{
     const [input, setInput] = useState('')
     const [oder, setOrder] = useState('')
     const [alfb, setAlfb] = useState('')
+    const videogames = useSelector(state=>state.allVideogames)
     const dispatch = useDispatch()
     function handleChange(e) {
         setInput(e.target.value)
@@ -36,7 +37,7 @@ const NavBar = ()=>{
         setAlfb(`Order by ${e.target.value}`)
     }
     return (
-        <header className="navbar">
+        <header className={videogames.length?"navbar":"none"}>
             <div id="created">
             <Link to='/addGame'>
                 Crear Game

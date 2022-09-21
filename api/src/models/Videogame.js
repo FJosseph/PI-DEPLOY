@@ -28,6 +28,9 @@ module.exports = (sequelize) => {
     plataformas: {
       type: DataTypes.ARRAY(DataTypes.JSON),
       allowNull: false
+    },
+    background_image:{
+      type: DataTypes.TEXT
     }
   }, {
     timestamps: false
