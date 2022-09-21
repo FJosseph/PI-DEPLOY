@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addGame } from "../actions";
-import { useHistory } from "react-router-dom";
+import { addGame, getGames } from "../actions";
+import { Link, useHistory } from "react-router-dom";
 import './form.css'
 
 export function validate(input) {
@@ -89,6 +89,7 @@ const FormAdd = ()=>{
         if(!input.genres.length || !input.plataformas.length || Object.keys(errores).length) return alert('Faltan agregar plataformas o géneros')
         dispatch(addGame(input)) &&
         alert('¡Videogame creado satisfactoriamente!')
+        dispatch(getGames())
         history.push('/home')
         // setInput({
         //     name: "",
@@ -111,6 +112,9 @@ const FormAdd = ()=>{
     },[genres, plataformas])
     return (
         <div id="form-add">
+            <div id="go-Home">
+                <Link to='/home'>Home</Link>
+            </div>
             <form onSubmit={handleSubmit}>
                 ¡Añade un videogame!
                 <input name='name' value={input.name} type="text" onChange={handleInputChange} placeholder="Nombre*" required/>
@@ -175,7 +179,7 @@ const FormAdd = ()=>{
                         <input checked={plataformas.Android} type='checkbox' onChange={handlePlataformas} value="Android" id="Android"/>
                         <label htmlFor="Android">Android</label>
                     </div>
-                <input style={{width:"30%",margin:"12px", background:"red", color:"white", cursor:"pointer"}} type="submit" value='Agregar game'/>
+                <input style={{width:"30%",margin:"0", marginTop:"4px", background:"red", color:"white", cursor:"pointer"}} type="submit" value='Agregar game'/>
             </form>
         </div>
     )

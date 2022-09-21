@@ -17,6 +17,8 @@
     width:100%
 }
 .card-game div{
+    display: flex;
+    flex-direction: column;
     height: 30%;
     padding: 2.5%;
     background: white;
@@ -30,4 +32,6 @@
 }
 .card-game p {
     margin: 0;
+    max-height: 25%;
+    overflow: hidden;
 }

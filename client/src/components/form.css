@@ -9,7 +9,23 @@
     align-items: center;
     background-size: cover;
 }
-
+#go-Home {
+	background-color: rgba(0, 0, 0, 0.877);
+	width: 41%;
+	margin: 8px 0;
+    /* margin: ; */
+	padding: 8px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#go-Home:hover{
+    background-color: red;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
 #form-add form{
     display: flex;
     flex-direction: column;
@@ -29,7 +45,6 @@
 
 #form-add form input{
     width: 90%;
-    margin: 10px 0;
     margin: 12px 0;
     border: none;
     height: 25px;
@@ -87,5 +102,11 @@ form input[type="checkbox"] {
     }
     #form-add form{
         width: 60%;
+    }
+    #go-Home{
+        width: 60%;
+    }
+    #form-add form input {
+        margin: 10px 0;
     }
 }
